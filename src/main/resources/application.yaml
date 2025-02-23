@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: JobExecutorService
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${JOBEXECUTORSERVICE_DB_NAME_MASTER_URL}/${PAYMENT_CARD_DB_NAME}
+    username: ${OBEXECUTORSERVICE_DB_USER}
+    password: ${OBEXECUTORSERVICE_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: ${HIKARI_MAXIMUM_POOL_SIZE:200}
+      minimum-idle: ${HIKARI_MINIMUM_IDLE:10}
+      idle-timeout: ${HIKARI_IDLE_TIMEOUT:60000}
+#  liquibase:
+#    change-log: classpath:dbschema/changelog.xml нужна будет миграция для БД
+  task:
+    execution:
+      pool:
+        core-size: ${TASK_EXECUTION_POOL_CORE_SIZE:200}
